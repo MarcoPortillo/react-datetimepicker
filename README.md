@@ -25,15 +25,13 @@ Run the following command:
 npm install react-advanced-datetimerange-picker
 ```
 
-## Requirements
-
-This project requires react-bootstrap to be installed
-
 ## General Info
 
 This project is based upon dangrossman daterangepicker (https://github.com/dangrossman/daterangepicker)
 
 The project has been rewritten in React, this is not a JQuery wrap around. 
+
+***No react-bootstrap dependency now!!!***
 
 It is based off of the V2 UI with some slight adjustments and added keyboard accessibility such as Keyboard arrow key navigation and Tab navigation. 
 
