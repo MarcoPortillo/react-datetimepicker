@@ -3,7 +3,6 @@ import DateTimeRangeContainer from '../../DateTimeRangeContainer'
 import {mount, configure} from "enzyme"
 import Adapter from 'enzyme-adapter-react-15';
 import moment from 'moment';
-import {FormControl} from 'react-bootstrap'
 
 configure({ adapter: new Adapter() });
 let now = new Date();
@@ -30,30 +29,30 @@ let applyCallback = (startDate, endDate) => {
   console.log(endDate)
 }
 const dateTimeRangeContainerExpectedUse = mount(
-  <DateTimeRangeContainer 
+  <DateTimeRangeContainer
       ranges={ranges}
       start={start}
       end={end}
       local={local}
       applyCallback={applyCallback}
-  >    
-      <FormControl
+  >
+      <input
         id="formControlsTextB"
         type="text"
         label="Text"
         placeholder="Enter text"
-      /> 
+      />
   </DateTimeRangeContainer>
 );
 
 const dateTimeRangeContainerNoChildren = mount(
-  <DateTimeRangeContainer 
+  <DateTimeRangeContainer
       ranges={ranges}
       start={start}
       end={end}
       local={local}
       applyCallback={applyCallback}
-  >    
+  >
   </DateTimeRangeContainer>
 );
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../style/DateTimeRange.css'
 import "../style/DateTimeRange.css"
-import {Glyphicon} from 'react-bootstrap'
+
 import {addFocusStyle} from '../utils/StyleUtils.js'
 
 class MonthYearSelector extends React.Component {
@@ -19,7 +19,7 @@ class MonthYearSelector extends React.Component {
         this.yearBlur = this.yearBlur.bind(this);
     }
 
-    createCalendarMonths(months){ 
+    createCalendarMonths(months){
         return this.mapToOption(months);
     }
 
@@ -50,8 +50,8 @@ class MonthYearSelector extends React.Component {
     }
 
     createGlyph(icon, onClickHandler, previous, next){
-        return <Glyphicon 
-            glyph={icon}
+        return <div
+
             style={{cursor:"pointer"}}
             onClick={ () => onClickHandler(previous, next)}
         />
@@ -66,14 +66,14 @@ class MonthYearSelector extends React.Component {
         monthFocusStyle = addFocusStyle(this.state.monthFocus, monthFocusStyle);
         let yearFocusStyle = {};
         yearFocusStyle = addFocusStyle(this.state.yearFocus, yearFocusStyle);
-        
+
         return(
             <div className="monthYearContainer">
                 <div className="multipleContentOnLine leftChevron" >
                     {leftArrow}
                 </div>
                 <div className="multipleContentOnLine" onFocus={this.monthFocus} onBlur={this.monthBlur} style={monthFocusStyle}>
-                    <select 
+                    <select
                         value={this.props.months[this.props.month]}
                         onChange={this.props.changeMonthCallback}
                     >

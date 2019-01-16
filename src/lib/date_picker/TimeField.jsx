@@ -1,7 +1,6 @@
 import React from 'react';
 import '../style/DateTimeRange.css'
 import "../style/DateTimeRange.css"
-import {Glyphicon} from 'react-bootstrap'
 import {generateHours, generateMinutes} from '../utils/TimeFunctionUtils'
 import { addFocusStyle } from '../utils/StyleUtils';
 
@@ -65,7 +64,7 @@ class TimeField extends React.Component {
 
     renderSelectField(valueInput, onChangeInput, optionsInput){
         return(
-            <select 
+            <select
                 value={valueInput}
                 onChange={onChangeInput}
             >
@@ -97,7 +96,7 @@ class TimeField extends React.Component {
                         {this.renderSelectField(minute, this.handleMinuteChange, minutes)}
                     </div>
                 </div>
-                <Glyphicon className="timeIconStyle" glyph="time" />
+                {/*<Glyphicon className="timeIconStyle" glyph="time" />*/}
             </div>
         );
   }

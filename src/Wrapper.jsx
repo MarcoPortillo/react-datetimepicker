@@ -1,6 +1,5 @@
 import React from 'react';
 import DateTimeRangeContainer from './lib/index'
-import {FormControl, Grid, Row, Col} from 'react-bootstrap'
 import moment from "moment"
 
 class Wrapper extends React.Component {
@@ -10,8 +9,8 @@ class Wrapper extends React.Component {
         let now = new Date();
         let start = moment(new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0,0,0,0));
         let end = moment(start).add(1, "days").subtract(1, "seconds");
-        start = moment(start).subtract(34, "months").subtract(1, "seconds");
-        end = moment(start).add(5, "days").add();
+        // start = moment(start).subtract(34, "months").subtract(1, "seconds");
+        // end = moment(start).add(5, "days").add();
         this.state = {
             start : start,
             end : end
@@ -31,6 +30,13 @@ class Wrapper extends React.Component {
                 end : endDate
             }
         )
+
+      if(this.props.onChange) {
+        this.props.onChange({
+          start: startDate.toISOString(),
+          end: endDate.toISOString(),
+        })
+      }
     }
 
     onClick(){
@@ -43,56 +49,41 @@ class Wrapper extends React.Component {
     renderContainerNoGrid(ranges, local, maxDate){
         return(
             <div>
-                <DateTimeRangeContainer 
+                <DateTimeRangeContainer
                     ranges={ranges}
                     start={this.state.start}
                     end={this.state.end}
                     local={local}
                     maxDate={maxDate}
                     applyCallback={this.applyCallback}
-                >    
-                    <FormControl
+                >
+                    <input
                     id="formControlsTextB"
                     type="text"
                     label="Text"
                     placeholder="Enter text"
-                    /> 
+                    />
                 </DateTimeRangeContainer>
-                <div onClick={this.onClick}>
-                    Click Me to test change state here and updating picker
-                </div>
-            </div>   
+            </div>
         )
     }
 
     renderGrid(ranges, local, maxDate){
         return(
-            <Grid>
-                <Row className="show-grid" style={{textAlign:"center"}}>
-                    <Col xs={3}>
-                    1
-                    </Col>
-                    <Col xs={6} md={4}>
-                        <DateTimeRangeContainer 
-                            ranges={ranges}
-                            start={this.state.start}
-                            end={this.state.end}
-                            local={local}
-                            applyCallback={this.applyCallback}
-                        >    
-                            <FormControl
-                            id="formControlsTextB"
-                            type="text"
-                            label="Text"
-                            placeholder="Enter text"
-                            /> 
-                        </DateTimeRangeContainer>
-                    </Col>
-                    <Col xs={3} md={4}>
-                    3
-                    </Col>
-                </Row>
-            </Grid>
+              <DateTimeRangeContainer
+                  ranges={ranges}
+                  start={this.state.start}
+                  end={this.state.end}
+                  local={local}
+                  applyCallback={this.applyCallback}
+              >
+                  <input
+                  id="formControlsTextB"
+                  type="text"
+                  label="Text"
+                  placeholder="Enter text"
+                  />
+              </DateTimeRangeContainer>
         )
     }
 
@@ -101,15 +92,15 @@ class Wrapper extends React.Component {
         let start = moment(new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0,0,0,0));
         let end = moment(start).add(1, "days").subtract(1, "seconds");
         let ranges = {
-            "Today Only": [moment(start), moment(end)],
-            "Yesterday Only": [moment(start).subtract(1, "days"), moment(end).subtract(1, "days")],
-            "3 Days": [moment(start).subtract(3, "days"), moment(end)],
-            "5 Days": [moment(start).subtract(5, "days"), moment(end)],
-            "1 Week": [moment(start).subtract(7, "days"), moment(end)],
-            "2 Weeks": [moment(start).subtract(14, "days"), moment(end)],
-            "1 Month": [moment(start).subtract(1, "months"), moment(end)],
-            "90 Days": [moment(start).subtract(90, "days"), moment(end)],
-            "1 Year": [moment(start).subtract(1, "years"), moment(end)],
+            "Today": [moment(start), moment(end)],
+            "Yesterday": [moment(start).subtract(1, "days"), moment(end).subtract(1, "days")],
+            "Last 3 Days": [moment(start).subtract(3, "days"), moment(end)],
+            "Last 5 Days": [moment(start).subtract(5, "days"), moment(end)],
+            "Last Week": [moment(start).subtract(7, "days"), moment(end)],
+            "Last 2 Weeks": [moment(start).subtract(14, "days"), moment(end)],
+            "Last Month": [moment(start).subtract(1, "months"), moment(end)],
+            "Last 90 Days": [moment(start).subtract(90, "days"), moment(end)],
+            "Last 1 Year": [moment(start).subtract(1, "years"), moment(end)],
         }
         let local = {
             "format":"DD-MM-YYYY HH:mm",
@@ -118,8 +109,6 @@ class Wrapper extends React.Component {
         let maxDate = moment(start).add(24, "hour")
          return(
              <div>
-                {this.renderContainerNoGrid(ranges, local, maxDate)}
-                {this.renderGrid(ranges, local, maxDate)}
                 {this.renderContainerNoGrid(ranges, local, maxDate)}
             </div>
          );
