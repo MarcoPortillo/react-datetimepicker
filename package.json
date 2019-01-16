@@ -1,9 +1,17 @@
 {
-  "name": "react-advanced-datetimerange-picker",
-  "version": "0.1.10",
+  "name": "@sizov.ilya/react-datetimepicker",
+  "description": "Date range picker with time",
+  "version": "0.1.1",
   "license": "GNU",
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "keywords": [
+    "react",
+    "react-daterange",
+    "date range picker",
+    "date range no bootstrap",
+    "ui"
+  ],
   "files": [
     "dist",
     "README.md"

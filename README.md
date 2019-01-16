@@ -1,11 +1,7 @@
 # React Advanced  Date Time Range Picker
-[![CircleCI](https://circleci.com/gh/v0ltoz/react-datetimepicker.svg?style=svg)](https://circleci.com/gh/v0ltoz/react-datetimepicker)
-[![](https://badge.fury.io/js/react-advanced-datetimerange-picker.svg)](https://www.npmjs.com/package/react-joyride)
-[![Maintainability](https://api.codeclimate.com/v1/badges/3b5c72752ef7cf3932b9/maintainability)](https://codeclimate.com/github/v0ltoz/react-datetimepicker/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/3b5c72752ef7cf3932b9/test_coverage)](https://codeclimate.com/github/v0ltoz/react-datetimepicker/test_coverage)
-<br>
+<br>  
 <b>
-Development still in progress, Stable release coming soon 
+No bootstrap in deps! Development still in progress, Stable release coming soon 
 </b>
 <br>
 
@@ -22,7 +18,7 @@ It has been designed currently to work with React Version 15
 ## Setup
 Run the following command:
 ```bash
-npm install react-advanced-datetimerange-picker
+npm install @sizov.ilya/react-datetimepicker
 ```
 
 ## General Info
