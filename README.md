@@ -7,8 +7,6 @@ No bootstrap in deps! Development still in progress, Stable release coming soon
 
 This is a fully rewritten, keyboard friendly implementation of a date time range picker. It has been designed for selecting date ranges and does not currently include a single date picker.
 
-It has been designed currently to work with React Version 15
-
 ![Date Time Picker](https://raw.githubusercontent.com/v0ltoz/react-datetimepicker/master/public/Date_Picker_Image.png)
 
 
@@ -18,18 +16,14 @@ It has been designed currently to work with React Version 15
 ## Setup
 Run the following command:
 ```bash
-npm install @sizov.ilya/react-datetimepicker
+npm install @ilya.sizov/react-datetimepicker
 ```
 
 ## General Info
 
-This project is based upon dangrossman daterangepicker (https://github.com/dangrossman/daterangepicker)
+This project is based upon v0ltoz/react-datetimepicker (https://github.com/v0ltoz/react-datetimepicker)
 
-The project has been rewritten in React, this is not a JQuery wrap around. 
-
-***No react-bootstrap dependency now!!!***
-
-It is based off of the V2 UI with some slight adjustments and added keyboard accessibility such as Keyboard arrow key navigation and Tab navigation. 
+The project has been rewritten in React, this is not a JQuery wrap around and is not a Bootstrap wrap around. 
 
 ## Properties Required
 
