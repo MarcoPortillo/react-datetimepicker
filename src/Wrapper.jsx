@@ -1,6 +1,7 @@
 import React from 'react';
+import moment from 'moment';
 import DateTimeRangeContainer from './lib/index'
-import moment from "moment"
+import './DateTimeRange.css'
 
 class Wrapper extends React.Component {
 

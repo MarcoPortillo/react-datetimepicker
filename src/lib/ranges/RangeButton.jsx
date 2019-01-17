@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from "react-dom";
-import '../style/DateTimeRange.css'
-import "../style/DateTimeRange.css"
 import { addFocusStyle } from '../utils/StyleUtils';
 
 class RangeButton extends React.Component{
@@ -108,16 +106,16 @@ class RangeButton extends React.Component{
         let focusStyle = {};
         focusStyle = addFocusStyle(this.state.focused, focusStyle);
         return(
-            <div 
+            <div
                 ref={button => { this.button = button; }}
-                className={this.state.style} 
-                onMouseEnter={this.mouseEnter} 
+                className={this.state.style}
+                onMouseEnter={this.mouseEnter}
                 onMouseLeave={this.mouseLeave}
                 onFocus={this.onFocus}
                 onBlur={this.onBlur}
                 tabIndex={tabIndex}
                 style={focusStyle}
-            > 
+            >
                 <div className="rangebuttontextstyle" onClick={() => this.props.rangeSelectedCallback(this.props.index, this.props.label)}>
                     {this.props.label}
                 </div>

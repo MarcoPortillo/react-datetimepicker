@@ -1,6 +1,4 @@
 import React from 'react';
-import '../style/DateTimeRange.css'
-import "../style/DateTimeRange.css"
 import RangeButton from "./RangeButton"
 import {mobileBreakPoint} from "../DateTimeRangeContainer"
 class Ranges extends React.Component{
@@ -60,11 +58,11 @@ class Ranges extends React.Component{
         return(
             <div className="rangecontainer" style={{display:displayI}}>
                 {Object.keys(this.props.ranges).map((range, i) => (
-                    <RangeButton 
-                        key={i} 
-                        index={i} 
-                        label={range} 
-                        value={this.props.ranges[range]} 
+                    <RangeButton
+                        key={i}
+                        index={i}
+                        label={range}
+                        value={this.props.ranges[range]}
                         selectedRange={this.props.selectedRange}
                         rangeSelectedCallback={this.props.rangeSelectedCallback}
                         viewingIndex={this.state.viewingIndex}

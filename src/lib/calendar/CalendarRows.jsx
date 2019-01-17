@@ -1,6 +1,4 @@
 import React from 'react';
-import '../style/DateTimeRange.css'
-import "../style/DateTimeRange.css"
 import CalendarRow from './CalendarRow'
 
 class CalendarRows extends React.Component {
@@ -11,7 +9,7 @@ generateDays(){
     let startIndex = i * 7;
     let endIndex = (((i + 1) * 7));
     let rowDays = this.props.fourtyTwoDays.slice(startIndex, endIndex);
-    calendarRows.push(<CalendarRow 
+    calendarRows.push(<CalendarRow
       key={i}
       rowDays={rowDays}
       date={this.props.date}

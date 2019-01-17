@@ -1,5 +1,4 @@
 import React from 'react';
-import '../style/DateTimeRange.css'
 
 class DateField extends React.Component {
 

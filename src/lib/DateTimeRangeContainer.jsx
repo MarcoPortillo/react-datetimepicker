@@ -1,6 +1,5 @@
 import React from 'react';
 import { findDOMNode } from "react-dom";
-import './style/DateTimeRange.css'
 import { DateTimeRangePicker } from './DateTimeRangePicker';
 import PropTypes from 'prop-types';
 import momentPropTypes from 'react-moment-proptypes';
@@ -89,19 +88,19 @@ class DateTimeRangeContainer extends React.Component {
             return "none"
         }
     }
-    
+
     render(){
-        let showPicker = this.shouldShowPicker();   
+        let showPicker = this.shouldShowPicker();
         let x = this.state.x;
         let y = this.state.y;
         return (
                 <div id="DateRangePickerContainer" className="daterangepickercontainer" onClick={this.onClickContainerHandler} ref={container => { this.container = container; }}>
-                    {this.props.children && 
+                    {this.props.children &&
                     <div id="DateRangePickerChildren">
                         {this.props.children}
                     </div>}
                     <div id="daterangepicker" className="daterangepicker" style={{top:x, left:y, display:showPicker}}>
-                        <DateTimeRangePicker 
+                        <DateTimeRangePicker
                             ranges={this.props.ranges}
                             start={this.props.start}
                             end={this.props.end}

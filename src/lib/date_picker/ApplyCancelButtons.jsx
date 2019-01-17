@@ -1,6 +1,4 @@
 import React from 'react';
-import '../style/DateTimeRange.css'
-import "../style/DateTimeRange.css"
 import { addFocusStyle } from '../utils/StyleUtils';
 
 class ApplyCancelButtons extends React.Component {
@@ -29,7 +27,7 @@ class ApplyCancelButtons extends React.Component {
         this.cancelOnBlur = this.cancelOnBlur.bind(this);
         this.cancelOnFocus = this.cancelOnFocus.bind(this);
     }
-    
+
     mouseEnterApply(e){
         this.setState({hoverColourApply: "#3e8e41"})
     }
@@ -63,11 +61,11 @@ class ApplyCancelButtons extends React.Component {
     }
 
     cancelOnFocus(){
-        this.setState({cancelFocus:true}); 
+        this.setState({cancelFocus:true});
     }
 
     cancelOnBlur(){
-        this.setState({cancelFocus:false}); 
+        this.setState({cancelFocus:false});
     }
 
     isSpaceBarOrEnterPressed(e){
@@ -94,12 +92,12 @@ class ApplyCancelButtons extends React.Component {
         if(text === "Apply"){
             styleLocal = addFocusStyle(this.state.applyFocus, style);
         }else{
-            styleLocal = addFocusStyle(this.state.cancelFocus, style);  
+            styleLocal = addFocusStyle(this.state.cancelFocus, style);
         }
         return(
-            <div 
+            <div
                 className={className}
-                onMouseEnter={onMouseEnter} 
+                onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
                 onClick={onClick}
                 style={styleLocal}
@@ -129,7 +127,7 @@ class ApplyCancelButtons extends React.Component {
             <div id="buttonContainer" className="buttonContainer">
                 {maxDateBox}
                 {
-                    this.renderButton("buttonSeperator applyButton", 
+                    this.renderButton("buttonSeperator applyButton",
                         this.mouseEnterApply,
                         this.mouseLeaveApply,
                         this.applyPressed,
@@ -142,7 +140,7 @@ class ApplyCancelButtons extends React.Component {
                 }
 
                 {
-                    this.renderButton("buttonSeperator cancelButton", 
+                    this.renderButton("buttonSeperator cancelButton",
                         this.mouseEnterCancel,
                         this.mouseLeaveCancel,
                         this.cancelPressed,

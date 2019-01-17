@@ -1,6 +1,4 @@
 import React from 'react';
-import '../style/DateTimeRange.css'
-import "../style/DateTimeRange.css"
 import MonthYearSelector from './MonthYearSelector'
 import CalendarHeader from './CalendarHeader'
 import CalendarRows from './CalendarRows'
@@ -33,7 +31,7 @@ class Calendar extends React.Component {
 
   updateMonthYear(){
     let newMonth = getMonth(this.props.date, this.props.otherDate, this.props.mode);
-    let newYear = getYear(this.props.date, this.props.otherDate, this.props.mode);    
+    let newYear = getYear(this.props.date, this.props.otherDate, this.props.mode);
     this.setState({
       month: newMonth,
       year : newYear
@@ -85,7 +83,7 @@ class Calendar extends React.Component {
     if(isNextChange){
       newMonthYear = this.getNextMonth(monthLocal, yearLocal, years);
     }
-    
+
     this.setState({
       year: newMonthYear.yearLocal,
       month: newMonthYear.monthLocal
@@ -95,7 +93,7 @@ class Calendar extends React.Component {
   getPreviousMonth(monthLocal, yearLocal, years){
     let isStartOfMonth = monthLocal === 0;
     let isFirstYear = parseInt(yearLocal) === years[0];
-    
+
     if(!(isStartOfMonth && isFirstYear)){
       if(monthLocal === 0){
         monthLocal = 11;
@@ -141,7 +139,7 @@ class Calendar extends React.Component {
     let fourtyTwoDays = getFourtyTwoDays(this.state.month, this.state.year, sundayFirst);
     return(
         <div>
-            <MonthYearSelector 
+            <MonthYearSelector
               date={this.props.date}
               mode={this.props.mode}
               otherDate={this.props.otherDate}
@@ -153,10 +151,10 @@ class Calendar extends React.Component {
               changeYearCallback={this.changeYearCallback}
               changeMonthArrowsCallback={this.changeMonthArrowsCallback}
             />
-            <CalendarHeader 
+            <CalendarHeader
               headers={headers}
             />
-            <CalendarRows 
+            <CalendarRows
               fourtyTwoDays={fourtyTwoDays}
               date={this.props.date}
               mode={this.props.mode}

@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import '../style/DateTimeRange.css'
 import {startDateStyle, endDateStyle, inBetweenStyle, normalCellStyle, hoverCellStyle, greyCellStyle, invalidStyle} from '../utils/TimeFunctionUtils'
 import {isInbetweenDates} from '../utils/TimeFunctionUtils'
 import moment from 'moment'
@@ -36,7 +35,7 @@ class Cell extends React.Component {
         let focusDateIsCellDate = typeof this.props.focusDate === "object" && this.props.focusDate.isSame(this.props.cellDay, "day")
         if(document.activeElement.id === "cell"){
             cellFocused = true;
-        }  
+        }
         if(cellFocused && focusDateIsCellDate && !this.shouldStyleCellGrey(this.props.cellDay)){
             this.cell.focus();
             this.props.focusOnCallback(false);
@@ -130,7 +129,7 @@ class Cell extends React.Component {
         let isCellOtherDateProp = cellDay.isSame(otherDate, "day")
         let isDateStart = date.isSameOrBefore(otherDate, "minute");
         let isOtherDateStart =  otherDate.isSameOrBefore(date, "minute");
-        
+
         if(startCheck){
             return (isCellDateProp && isDateStart) || (isCellOtherDateProp && isOtherDateStart)
         }else if(endCheck){
@@ -164,7 +163,7 @@ class Cell extends React.Component {
         let isDateStart = date.isSameOrBefore(otherDate, "minute");
         let inbetweenDates = isInbetweenDates(isDateStart, cellDay, date, otherDate);
 
-        if(this.shouldStyleCellStartEnd(cellDay, date, otherDate, true, false)){           
+        if(this.shouldStyleCellStartEnd(cellDay, date, otherDate, true, false)){
             this.setState({"style": startDateStyle()});
         }else if(this.shouldStyleCellStartEnd(cellDay, date, otherDate, false, true)){
             this.setState({"style": endDateStyle()});
@@ -196,12 +195,12 @@ class Cell extends React.Component {
         }
         let style = addFocusStyle(this.state.focus, this.state.style);
         return(
-            <div 
+            <div
                 ref={cell => { this.cell = cell; }}
                 className="calendarCell"
                 tabIndex={tabIndex}
                 style={style}
-                onMouseEnter={this.mouseEnter} 
+                onMouseEnter={this.mouseEnter}
                 onMouseLeave={this.mouseLeave}
                 onClick={this.onClick}
                 onFocus={this.onFocus}
