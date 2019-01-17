@@ -19,7 +19,7 @@ This project is based upon v0ltoz/react-datetimepicker (https://github.com/v0lto
 1. Bootstrap completely removed.
 2. Css styling removed from internal components and moved to wrapper level. One css file for all. Feel free to change it.
 3. All libs including react updated to actually versions.
-4. Removed react-dot-fragment package, instead used native React 16 <Fragment>.
+4. Removed react-dot-fragment package, instead used native React 16 Fragment component.
 
 My goal - to get working component with minimum dependencies. I need it for my projects, but 
 i do not want to add weight to my .js bundle. I do not need jQuery(thanks to v0ltoz). I do not need 
