@@ -1,4 +1,4 @@
-# React Advanced Date Time Range Picker
+# React Advanced Date Time Range Picker :rocket: :guitar: :volcano:
 This is a fully rewritten, keyboard friendly implementation of a date time range picker. It has been designed for selecting date ranges and does not currently include a single date picker.
 
 ![Date Time Picker](https://github.com/sizovilya/react-datetimepicker/blob/master/public/Date_Picker_Image.png?raw=true)
@@ -14,7 +14,7 @@ npm install @ilya.sizov/react-datetimepicker
 
 This project is based upon v0ltoz/react-datetimepicker (https://github.com/v0ltoz/react-datetimepicker)  
 
-*What changed:*
+**What changed:**
 1. Bootstrap completely removed.
 2. Css styling removed from internal components and moved to wrapper level. One css file for all. Feel free to change it.
 3. All libs including react updated to actually versions.
@@ -24,7 +24,7 @@ My goal - to get working component with minimum dependencies. I need it for my p
 i do not want to add weight to my .js bundle. I do not need jQuery(thanks to v0ltoz). I do not need 
 Bootstrap.
 
-*What can be improved(if you have time :muscle:):*
+**What can be improved(if you have time :muscle:):**
 1. After bootstrap removing i was loss all icons(because <Glyphicon/> component was removed). Would be great to include 
 pretty icons for inputs and selects.
 2. Would be great to fix tests.
