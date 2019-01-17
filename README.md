@@ -1,10 +1,9 @@
 # React Advanced Date Time Range Picker :rocket: :guitar: :volcano:
 This is a fully rewritten, keyboard friendly implementation of a date time range picker. It has been designed for selecting date ranges and does not currently include a single date picker.
 
-[npm](https://www.npmjs.com/package/@ilya.sizov/react-datetimepicker)
-
 ![Date Time Picker](https://github.com/sizovilya/react-datetimepicker/blob/master/public/Date_Picker_Image.png?raw=true)
 
+[npm link](https://www.npmjs.com/package/@ilya.sizov/react-datetimepicker)
 
 ## Setup
 Run the following command:
@@ -27,7 +26,7 @@ i do not want to add weight to my .js bundle. I do not need jQuery(thanks to v0l
 Bootstrap.
 
 **What can be improved(if you have time :muscle:):**
-1. After bootstrap removing i was loss all icons(because <Glyphicon/> component was removed). Would be great to include 
+1. After bootstrap removing i've lost all icons(because <Glyphicon/> component was removed). Would be great to include 
 pretty icons for inputs and selects.
 2. Would be great to fix tests.
 3. Would be great to improve default styling for more pretty look.
