@@ -36,7 +36,7 @@ let focusDate = false;
 let cellFocusedCallback = (date) => {}
 
 const dateTimeRangeCalendarExpectedUse = mount(
-  <Calendar 
+  <Calendar
       ranges={ranges}
       date={start}
       otherDate={end}
@@ -47,7 +47,7 @@ const dateTimeRangeCalendarExpectedUse = mount(
       focusDate={focusDate}
       cellFocusedCallback={cellFocusedCallback}
       local={local}
-  />    
+  />
 );
 
 describe("MonthYearSelector Focus Blur Tests", () => {

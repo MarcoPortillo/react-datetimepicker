@@ -36,7 +36,7 @@ let focusDate = false;
 let cellFocusedCallback = (date) => {}
 
 const dateTimeRangeCalendarExpectedUse = mount(
-  <Calendar 
+  <Calendar
       ranges={ranges}
       date={start}
       otherDate={end}
@@ -47,14 +47,14 @@ const dateTimeRangeCalendarExpectedUse = mount(
       focusDate={focusDate}
       cellFocusedCallback={cellFocusedCallback}
       local={local}
-  />    
+  />
 );
 let localUSA = {
     "format":"MM-DD-YYYY HH:mm",
     "sundayFirst" : true
 }
 const dateTimeRangeCalendarAmerican = mount(
-    <Calendar 
+    <Calendar
         ranges={ranges}
         date={start}
         otherDate={end}
@@ -65,11 +65,11 @@ const dateTimeRangeCalendarAmerican = mount(
         focusDate={focusDate}
         cellFocusedCallback={cellFocusedCallback}
         local={localUSA}
-    />    
+    />
   );
 
   const dateTimeRangeCalendarEndMode = mount(
-    <Calendar 
+    <Calendar
         ranges={ranges}
         date={start}
         otherDate={end}
@@ -80,7 +80,7 @@ const dateTimeRangeCalendarAmerican = mount(
         focusDate={focusDate}
         cellFocusedCallback={cellFocusedCallback}
         local={localUSA}
-    />    
+    />
   );
 
 beforeEach(() => {
@@ -221,37 +221,37 @@ describe("DateTimeRangeContainer", () => {
     it("Calendar Year Change to 2017, Changes Cells Test", () => {
         const wrappingDiv = dateTimeRangeCalendarExpectedUse;
         const monthYearSelector = wrappingDiv.find(MonthYearSelector);
-        monthYearSelector.children().children().at(2).children().simulate('change', {target: { value : 2017}});;  
+        monthYearSelector.children().children().at(2).children().simulate('change', {target: { value : 2017}});;
         const cells = wrappingDiv.find(Cell);
         let cellDay = cells.at(0).props().cellDay;
         let expectedDate = moment(new Date(2016, 11, 26));
         expect(cellDay.isSame(expectedDate, "day")).toBe(true);
         // Reset To Previous Value
-        monthYearSelector.children().children().at(2).children().simulate('change', {target: { value : 2018}});;  
+        monthYearSelector.children().children().at(2).children().simulate('change', {target: { value : 2018}});;
     });
 
     it("Calendar Left Arrow Press Test", () => {
         const wrappingDiv = dateTimeRangeCalendarExpectedUse;
         const monthYearSelector = wrappingDiv.find(MonthYearSelector);
-        monthYearSelector.children().children().at(0).children().simulate('click'); 
+        monthYearSelector.children().children().at(0).children().simulate('click');
         const cells = wrappingDiv.find(Cell);
         let cellDay = cells.at(0).props().cellDay;
         let expectedDate = moment(new Date(2017, 10, 27));
         expect(cellDay.isSame(expectedDate, "day")).toBe(true);
         // Reset To Previous Value
-        monthYearSelector.children().children().at(3).children().simulate('click'); 
+        monthYearSelector.children().children().at(3).children().simulate('click');
     });
 
     it("Calendar Right Arrow Press Test", () => {
         const wrappingDiv = dateTimeRangeCalendarExpectedUse;
         const monthYearSelector = wrappingDiv.find(MonthYearSelector);
-        monthYearSelector.children().children().at(3).children().simulate('click'); 
+        monthYearSelector.children().children().at(3).children().simulate('click');
         const cells = wrappingDiv.find(Cell);
         let cellDay = cells.at(0).props().cellDay;
         let expectedDate = moment(new Date(2018, 0, 29));
         expect(cellDay.isSame(expectedDate, "day")).toBe(true);
         // Reset To Previous Value
-        monthYearSelector.children().children().at(0).children().simulate('click'); 
+        monthYearSelector.children().children().at(0).children().simulate('click');
     });
 
     it("Calendar Update Month Year after Props Change Test, Different Month Year", () => {

@@ -17,14 +17,13 @@ class Wrapper extends React.Component {
             end : end
         }
 
-        this.onClick = this.onClick.bind(this);
         this.applyCallback = this.applyCallback.bind(this);
     }
 
     applyCallback(startDate, endDate){
-        // console.log("Apply Callback");
-        // console.log(startDate.format("DD-MM-YYYY HH:mm"));
-        // console.log(endDate.format("DD-MM-YYYY HH:mm"));
+        console.log("Apply Callback");
+        console.log(startDate.format("DD-MM-YYYY HH:mm"));
+        console.log(endDate.format("DD-MM-YYYY HH:mm"));
         this.setState(
             {
                 start: startDate,
@@ -38,54 +37,6 @@ class Wrapper extends React.Component {
           end: endDate.toISOString(),
         })
       }
-    }
-
-    onClick(){
-        let newStart = moment(this.state.start).subtract(3, "days");
-        // console.log("On Click Callback");
-        // console.log(newStart.format("DD-MM-YYYY HH:mm"));
-        this.setState({start : newStart})
-    }
-
-    renderContainerNoGrid(ranges, local, maxDate){
-        return(
-            <div>
-                <DateTimeRangeContainer
-                    ranges={ranges}
-                    start={this.state.start}
-                    end={this.state.end}
-                    local={local}
-                    maxDate={maxDate}
-                    applyCallback={this.applyCallback}
-                >
-                    <input
-                    id="formControlsTextB"
-                    type="text"
-                    label="Text"
-                    placeholder="Enter text"
-                    />
-                </DateTimeRangeContainer>
-            </div>
-        )
-    }
-
-    renderGrid(ranges, local, maxDate){
-        return(
-              <DateTimeRangeContainer
-                  ranges={ranges}
-                  start={this.state.start}
-                  end={this.state.end}
-                  local={local}
-                  applyCallback={this.applyCallback}
-              >
-                  <input
-                  id="formControlsTextB"
-                  type="text"
-                  label="Text"
-                  placeholder="Enter text"
-                  />
-              </DateTimeRangeContainer>
-        )
     }
 
      render(){
@@ -109,10 +60,22 @@ class Wrapper extends React.Component {
         }
         let maxDate = moment(start).add(24, "hour")
          return(
-             <div>
-                {this.renderContainerNoGrid(ranges, local, maxDate)}
-            </div>
+             <DateTimeRangeContainer
+                 ranges={ranges}
+                 start={this.state.start}
+                 end={this.state.end}
+                 local={local}
+                 maxDate={maxDate}
+                 applyCallback={this.applyCallback}
+             >
+                 <input
+                     id="formControlsTextB"
+                     type="text"
+                     label="Text"
+                     placeholder="Enter text"
+                 />
+             </DateTimeRangeContainer>
          );
      }
 }
-export {Wrapper};
+export { Wrapper };

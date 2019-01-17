@@ -1,16 +1,7 @@
-# React Advanced  Date Time Range Picker
-<br>  
-<b>
-No bootstrap in deps! Development still in progress, Stable release coming soon 
-</b>
-<br>
-
+# React Advanced Date Time Range Picker
 This is a fully rewritten, keyboard friendly implementation of a date time range picker. It has been designed for selecting date ranges and does not currently include a single date picker.
 
 ![Date Time Picker](https://raw.githubusercontent.com/v0ltoz/react-datetimepicker/master/public/Date_Picker_Image.png)
-
-
-
 
 
 ## Setup
@@ -21,16 +12,29 @@ npm install @ilya.sizov/react-datetimepicker
 
 ## General Info
 
-This project is based upon v0ltoz/react-datetimepicker (https://github.com/v0ltoz/react-datetimepicker)
+This project is based upon v0ltoz/react-datetimepicker (https://github.com/v0ltoz/react-datetimepicker)  
 
-The project has been rewritten in React, this is not a JQuery wrap around and is not a Bootstrap wrap around. 
+*What changed:*
+1. Bootstrap completely removed.
+2. Css styling removed from internal components and moved to wrapper level. One css file for all. Feel free to change it.
+3. All libs including react updated to actually versions.
+4. Removed react-dot-fragment package, instead used native React 16 <Fragment>.
 
+My goal - to get working component with minimum dependencies. I need it for my projects, but 
+i do not want to add weight to my .js bundle. I do not need jQuery(thanks to v0ltoz). I do not need 
+Bootstrap.
+
+*What can be improved(if you have time :muscle:):*
+1. After bootstrap removing i was loss all icons(because <Glyphicon/> component was removed). Would be great to include 
+pretty icons for inputs and selects.
+2. Would be great to fix tests.
+3. Would be great to improve default styling for more pretty look.
 ## Properties Required
 
 **ranges** {React.Object}  
 Object of ranges that will be you default ranges. Example:
 ```js
-let ranges = {
+const ranges = {
             "Today Only": [moment(start), moment(end)],
             "Yesterday Only": [moment(start).subtract(1, "days"), moment(end).subtract(1, "days")],
             "3 Days": [moment(start).subtract(3, "days"), moment(end)]
@@ -49,7 +53,7 @@ Defines a local format for date labels to be shown as. Can also set Sunday to be
 --> sundayFirst: True Sunday the first day of the week. False, Monday first day of the week. 
 
 ```js
-let local = {
+const local = {
     "format":"DD-MM-YYYY HH:mm",
     "sundayFirst" : false
 }
@@ -59,7 +63,7 @@ let local = {
 Function which is called when the apply button is clicked/pressed. Takes two params, that start date and the end date.
 
 ```js
-func applyCallback(startDate, endDate){
+function applyCallback(startDate, endDate) {
     ... 
 }
 ```
@@ -72,9 +76,9 @@ Maximum date that can be selected.
 
 ```js
 import React from 'react';
-import DateTimeRangeContainer from 'react-advanced-datetimerange-picker'
-import {FormControl} from 'react-bootstrap'
-import moment from "moment"
+import moment from 'moment';
+import DateTimeRangeContainer from './lib/index'
+import './DateTimeRange.css'
 
 class Wrapper extends React.Component {
 
@@ -83,57 +87,78 @@ class Wrapper extends React.Component {
         let now = new Date();
         let start = moment(new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0,0,0,0));
         let end = moment(start).add(1, "days").subtract(1, "seconds");
+        // start = moment(start).subtract(34, "months").subtract(1, "seconds");
+        // end = moment(start).add(5, "days").add();
         this.state = {
             start : start,
             end : end
         }
 
+        this.onClick = this.onClick.bind(this);
         this.applyCallback = this.applyCallback.bind(this);
     }
 
     applyCallback(startDate, endDate){
-        this.setState({
+        console.log("Apply Callback");
+        console.log(startDate.format("DD-MM-YYYY HH:mm"));
+        console.log(endDate.format("DD-MM-YYYY HH:mm"));
+        this.setState(
+            {
                 start: startDate,
                 end : endDate
             }
         )
+
+      if(this.props.onChange) {
+        this.props.onChange({
+          start: startDate.toISOString(),
+          end: endDate.toISOString(),
+        })
+      }
     }
 
-    render(){
-            let now = new Date();
-            let start = moment(new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0,0,0,0));
-            let end = moment(start).add(1, "days").subtract(1, "seconds");
-            let ranges = {
-                "Today Only": [moment(start), moment(end)],
-                "Yesterday Only": [moment(start).subtract(1, "days"), moment(end).subtract(1, "days")],
-                "3 Days": [moment(start).subtract(3, "days"), moment(end)]
-            }
-            let local = {
-                "format":"DD-MM-YYYY HH:mm",
-                "sundayFirst" : false
-            }
-            let maxDate = moment(start).add(24, "hour")
-            return(
-                <div>
-                    <DateTimeRangeContainer 
-                        ranges={ranges}
-                        start={this.state.start}
-                        end={this.state.end}
-                        local={local}
-                        maxDate={maxDate}
-                        applyCallback={this.applyCallback}
-                    >    
-                        <FormControl
-                        id="formControlsTextB"
-                        type="text"
-                        label="Text"
-                        placeholder="Enter text"
-                        /> 
-                    </DateTimeRangeContainer>
-                </div>
-            );
+     render(){
+        let now = new Date();
+        let start = moment(new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0,0,0,0));
+        let end = moment(start).add(1, "days").subtract(1, "seconds");
+        let ranges = {
+            "Today": [moment(start), moment(end)],
+            "Yesterday": [moment(start).subtract(1, "days"), moment(end).subtract(1, "days")],
+            "Last 3 Days": [moment(start).subtract(3, "days"), moment(end)],
+            "Last 5 Days": [moment(start).subtract(5, "days"), moment(end)],
+            "Last Week": [moment(start).subtract(7, "days"), moment(end)],
+            "Last 2 Weeks": [moment(start).subtract(14, "days"), moment(end)],
+            "Last Month": [moment(start).subtract(1, "months"), moment(end)],
+            "Last 90 Days": [moment(start).subtract(90, "days"), moment(end)],
+            "Last 1 Year": [moment(start).subtract(1, "years"), moment(end)],
         }
+        let local = {
+            "format":"DD-MM-YYYY HH:mm",
+            "sundayFirst" : false
+        }
+        let maxDate = moment(start).add(24, "hour")
+        
+         return(
+             <DateTimeRangeContainer
+                 ranges={ranges}
+                 start={this.state.start}
+                 end={this.state.end}
+                 local={local}
+                 maxDate={maxDate}
+                 applyCallback={this.applyCallback}
+             >
+                 <input
+                     id="formControlsTextB"
+                     type="text"
+                     label="Text"
+                     placeholder="Enter text"
+                 />
+             </DateTimeRangeContainer>
+         );
+     }
 }
+export { Wrapper };
+
 ```
 
 

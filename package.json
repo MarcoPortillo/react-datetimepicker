@@ -1,7 +1,7 @@
 {
   "name": "@ilya.sizov/react-datetimepicker",
   "description": "Date range picker with time",
-  "version": "0.1.7",
+  "version": "0.1.9",
   "license": "GNU",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -29,11 +29,10 @@
     ]
   },
   "dependencies": {
-    "moment": "2.22.2",
+    "moment": "2.23.0",
     "prop-types": "15.6.2",
-    "react-dot-fragment": "0.2.7",
     "react-moment-proptypes": "1.6.0",
-    "react-scripts": "2.1.1"
+    "react-scripts": "2.1.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -50,15 +49,15 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@babel/cli": "^7.1.5",
-    "@babel/core": "^7.1.6",
-    "@babel/preset-env": "^7.1.6",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.4",
-    "enzyme": "^3.7.0",
+    "babel-loader": "8.0.4",
+    "enzyme": "^3.8.0",
     "enzyme-adapter-react-15": "^1.1.1",
-    "react": "15.6.2",
-    "react-dom": "15.6.2",
-    "react-test-renderer": "^15.6.2"
+    "react": "^16.7.0 ",
+    "react-dom": "^16.7.0 ",
+    "react-test-renderer": "^16.7.0 "
   }
 }

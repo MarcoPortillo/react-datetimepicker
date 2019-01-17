@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Ranges from "./ranges/Ranges"
 import DatePicker from "./date_picker/DatePicker"
-import Fragment from 'react-dot-fragment'
 import moment from "moment"
-import {isValidTimeChange} from './utils/TimeFunctionUtils'
-import {datePicked, pastMaxDate} from './utils/DateSelectedUtils'
+import { isValidTimeChange } from './utils/TimeFunctionUtils'
+import { datePicked, pastMaxDate } from './utils/DateSelectedUtils'
 
 export const ModeEnum = Object.freeze({"start":"start", "end":"end"});
 export var momentFormat = "DD-MM-YYYY HH:mm";
