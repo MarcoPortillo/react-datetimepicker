@@ -1,7 +1,7 @@
 {
   "name": "@ilya.sizov/react-datetimepicker",
   "description": "Date range picker with time",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "license": "GNU",
   "main": "dist/index.js",
   "module": "dist/index.js",
