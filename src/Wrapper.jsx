@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import moment from 'moment';
 import DateTimeRangeContainer from './lib/index'
+import { CalendarContainer } from './lib/index'
 import './DateTimeRange.css'
 
 class Wrapper extends React.Component {
@@ -14,10 +15,14 @@ class Wrapper extends React.Component {
         // end = moment(start).add(5, "days").add();
         this.state = {
             start : start,
-            end : end
+            end : end,
+
+            // for calendar
+            calendarDate: start,
         }
 
         this.applyCallback = this.applyCallback.bind(this);
+        this.onCalendarDateChanged = this.onCalendarDateChanged.bind(this);
     }
 
     applyCallback(startDate, endDate){
@@ -37,6 +42,13 @@ class Wrapper extends React.Component {
           end: endDate.toISOString(),
         })
       }
+    }
+
+    onCalendarDateChanged(calendarDate) {
+        console.log(calendarDate.toDate())
+       this.setState({
+           calendarDate,
+       })
     }
 
      render(){
@@ -60,21 +72,44 @@ class Wrapper extends React.Component {
         }
         let maxDate = moment(start).add(24, "hour")
          return(
-             <DateTimeRangeContainer
-                 ranges={ranges}
-                 start={this.state.start}
-                 end={this.state.end}
-                 local={local}
-                 maxDate={maxDate}
-                 applyCallback={this.applyCallback}
-             >
-                 <input
-                     id="formControlsTextB"
-                     type="text"
-                     label="Text"
-                     placeholder="Enter text"
-                 />
-             </DateTimeRangeContainer>
+             <Fragment>
+                 {
+                     false &&
+                     <DateTimeRangeContainer
+                         ranges={ranges}
+                         start={this.state.start}
+                         end={this.state.end}
+                         local={local}
+                         maxDate={maxDate}
+                         applyCallback={this.applyCallback}
+                     >
+                         <input
+                             id="formControlsTextB"
+                             type="text"
+                             label="Text"
+                             placeholder="Select range of dates"
+                         />
+                     </DateTimeRangeContainer>
+                 }
+                 {
+                     true &&
+                         <div className="simple-calendar">
+                             <CalendarContainer
+                               value={this.state.calendarDate}
+                               maxDate={maxDate}
+                               onChange={this.onCalendarDateChanged}
+                               local={local}
+                             >
+                                 <input
+                                     id="formControlsTextC"
+                                     type="text"
+                                     label="Text"
+                                     placeholder="Select date"
+                                 />
+                             </CalendarContainer>
+                         </div>
+                 }
+             </Fragment>
          );
      }
 }
