@@ -44,11 +44,16 @@ class Wrapper extends React.Component {
       }
     }
 
-    onCalendarDateChanged(calendarDate) {
-        console.log(calendarDate.toDate())
+    onCalendarDateChanged(date) {
+       const formatDate = date.format("DD-MM-YYYY")
+       console.log(formatDate)
        this.setState({
-           calendarDate,
+           calendarDate: date,
        })
+
+       if(this.props.onCalendarChange) {
+           this.props.onCalendarChange()
+       }
     }
 
      render(){
@@ -74,7 +79,7 @@ class Wrapper extends React.Component {
          return(
              <Fragment>
                  {
-                     false &&
+                     true &&
                      <DateTimeRangeContainer
                          ranges={ranges}
                          start={this.state.start}
