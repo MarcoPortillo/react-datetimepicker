@@ -1,2 +1,5 @@
 import DateTimeRangeContainer from "./DateTimeRangeContainer"
-export default DateTimeRangeContainer;
+import CalendarContainer from './CalendarContainer'
+
+export default DateTimeRangeContainer
+export { CalendarContainer }
