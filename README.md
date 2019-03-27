@@ -6,6 +6,7 @@ This is a fully rewritten, keyboard friendly implementation of a date time range
 
 ### (New)Calendar mode added:  
 ![Calendar mode](https://github.com/sizovilya/react-datetimepicker/blob/master/public/Calendar_mode.png?raw=true)  
+
 If you want to use simple calendar:  
 
 ```javascript
