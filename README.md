@@ -1,7 +1,32 @@
 # React Advanced Date Time Range Picker :rocket: :guitar: :volcano:
 This is a fully rewritten, keyboard friendly implementation of a date time range picker. It has been designed for selecting date ranges and does not currently include a single date picker.
 
+### Default:
 ![Date Time Picker](https://github.com/sizovilya/react-datetimepicker/blob/master/public/Date_Picker_Image.png?raw=true)
+
+###(New)Calendar mode added:
+![Calendar mode](https://github.com/sizovilya/react-datetimepicker/blob/master/public/Calendar_mode.png?raw=true)  
+If you want to use simple calendar:  
+```javascript
+import { CalendarContainer } from '@ilya.sizov/react-datetimepicker'
+...  
+...  
+...  
+ <CalendarContainer
+   value={this.state.calendarDate}
+   maxDate={maxDate}
+   onChange={this.onCalendarDateChanged}
+   local={local}
+ >
+     <input
+         id="formControlsTextC"
+         type="text"
+         label="Text"
+         placeholder="Select date"
+     />
+ </CalendarContainer>
+```  
+See full example below(Wrapper.jsx).  
 
 [npm link](https://www.npmjs.com/package/@ilya.sizov/react-datetimepicker)
 
@@ -76,9 +101,10 @@ Maximum date that can be selected.
 ## Getting Started
 
 ```js
-import React from 'react';
+import React, { Fragment } from 'react';
 import moment from 'moment';
 import DateTimeRangeContainer from './lib/index'
+import { CalendarContainer } from './lib/index'
 import './DateTimeRange.css'
 
 class Wrapper extends React.Component {
@@ -92,11 +118,14 @@ class Wrapper extends React.Component {
         // end = moment(start).add(5, "days").add();
         this.state = {
             start : start,
-            end : end
+            end : end,
+
+            // for calendar
+            calendarDate: start,
         }
 
-        this.onClick = this.onClick.bind(this);
         this.applyCallback = this.applyCallback.bind(this);
+        this.onCalendarDateChanged = this.onCalendarDateChanged.bind(this);
     }
 
     applyCallback(startDate, endDate){
@@ -116,6 +145,18 @@ class Wrapper extends React.Component {
           end: endDate.toISOString(),
         })
       }
+    }
+
+    onCalendarDateChanged(date) {
+       const formatDate = date.format("DD-MM-YYYY")
+       console.log(formatDate)
+       this.setState({
+           calendarDate: date,
+       })
+
+       if(this.props.onCalendarChange) {
+           this.props.onCalendarChange()
+       }
     }
 
      render(){
@@ -138,27 +179,50 @@ class Wrapper extends React.Component {
             "sundayFirst" : false
         }
         let maxDate = moment(start).add(24, "hour")
-        
          return(
-             <DateTimeRangeContainer
-                 ranges={ranges}
-                 start={this.state.start}
-                 end={this.state.end}
-                 local={local}
-                 maxDate={maxDate}
-                 applyCallback={this.applyCallback}
-             >
-                 <input
-                     id="formControlsTextB"
-                     type="text"
-                     label="Text"
-                     placeholder="Enter text"
-                 />
-             </DateTimeRangeContainer>
+             <Fragment>
+                 {
+                     true &&
+                     <DateTimeRangeContainer
+                         ranges={ranges}
+                         start={this.state.start}
+                         end={this.state.end}
+                         local={local}
+                         maxDate={maxDate}
+                         applyCallback={this.applyCallback}
+                     >
+                         <input
+                             id="formControlsTextB"
+                             type="text"
+                             label="Text"
+                             placeholder="Select range of dates"
+                         />
+                     </DateTimeRangeContainer>
+                 }
+                 {
+                     true &&
+                         <div className="simple-calendar">
+                             <CalendarContainer
+                               value={this.state.calendarDate}
+                               maxDate={maxDate}
+                               onChange={this.onCalendarDateChanged}
+                               local={local}
+                             >
+                                 <input
+                                     id="formControlsTextC"
+                                     type="text"
+                                     label="Text"
+                                     placeholder="Select date"
+                                 />
+                             </CalendarContainer>
+                         </div>
+                 }
+             </Fragment>
          );
      }
 }
 export { Wrapper };
+
 
 ```
 
