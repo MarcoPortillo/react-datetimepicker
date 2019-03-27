@@ -4,9 +4,10 @@ This is a fully rewritten, keyboard friendly implementation of a date time range
 ### Default:
 ![Date Time Picker](https://github.com/sizovilya/react-datetimepicker/blob/master/public/Date_Picker_Image.png?raw=true)  
 
-###(New)Calendar mode added:
-![Calendar mode](https://github.com/sizovilya/react-datetimepicker/blob/master/public/Calendar_mode.png?raw=true)      
-If you want to use simple calendar:    
+### (New)Calendar mode added:  
+![Calendar mode](https://github.com/sizovilya/react-datetimepicker/blob/master/public/Calendar_mode.png?raw=true)  
+If you want to use simple calendar:  
+
 ```javascript
 import { CalendarContainer } from '@ilya.sizov/react-datetimepicker'
 ...  
