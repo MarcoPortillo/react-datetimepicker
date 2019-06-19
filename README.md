@@ -1,5 +1,5 @@
 # React Advanced Date Time Range Picker :rocket: :guitar: :volcano:
-This is a fully rewritten, keyboard friendly implementation of a date time range picker. It has been designed for selecting date ranges and does not currently include a single date picker.
+This is a fully rewritten, keyboard friendly implementation of a date time range picker. It has been designed for selecting date ranges and currently include a single date picker.
 
 ### Default:
 ![Date Time Picker](https://github.com/sizovilya/react-datetimepicker/blob/master/public/Date_Picker_Image.png?raw=true)  

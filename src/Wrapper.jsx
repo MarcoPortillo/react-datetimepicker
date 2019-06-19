@@ -23,6 +23,7 @@ class Wrapper extends React.Component {
 
         this.applyCallback = this.applyCallback.bind(this);
         this.onCalendarDateChanged = this.onCalendarDateChanged.bind(this);
+        this.onRangeChanged = this.onRangeChanged.bind(this);
     }
 
     applyCallback(startDate, endDate){
@@ -56,7 +57,12 @@ class Wrapper extends React.Component {
        }
     }
 
-     render(){
+    onRangeChanged(value, startDate, endDate) {
+        console.log(value, startDate, endDate)
+        this.applyCallback(startDate, endDate)
+    }
+
+    render(){
         let now = new Date();
         let start = moment(new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0,0,0,0));
         let end = moment(start).add(1, "days").subtract(1, "seconds");
@@ -87,6 +93,7 @@ class Wrapper extends React.Component {
                          local={local}
                          maxDate={maxDate}
                          applyCallback={this.applyCallback}
+                         onRangeChanged={this.onRangeChanged}
                      >
                          <input
                              id="formControlsTextB"
