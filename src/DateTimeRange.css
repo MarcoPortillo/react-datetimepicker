@@ -218,3 +218,10 @@
 .simple-calendar {
   width: 270px;
 }
+
+.simple-calendar-start-end {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}

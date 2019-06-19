@@ -19,6 +19,7 @@ class CalendarContainer extends React.Component {
         this.handleOutsideClick = this.handleOutsideClick.bind(this);
         this.changeVisibleState = this.changeVisibleState.bind(this);
         this.keyDown = this.keyDown.bind(this);
+        this.onChange = this.onChange.bind(this);
     }
 
     componentDidMount(){
@@ -79,7 +80,7 @@ class CalendarContainer extends React.Component {
         }));
     }
 
-    shouldShowPicker(){
+    shouldShowPicker() {
         if(this.state.visible && this.state.screenWidthToTheRight < mobileBreakPoint){
             return "block"
         } else if(this.state.visible){
@@ -88,6 +89,12 @@ class CalendarContainer extends React.Component {
             return "none"
         }
     }
+
+    onChange(date) {
+        this.props.onChange(date)
+        this.changeVisibleState()
+    }
+
 
     render() {
         let showPicker = this.shouldShowPicker();
@@ -105,7 +112,7 @@ class CalendarContainer extends React.Component {
                         mode="end"
                         otherDate={this.props.value}
                         maxDate={this.props.maxDate}
-                        dateSelectedNoTimeCallback={this.props.onChange}
+                        dateSelectedNoTimeCallback={this.onChange}
                         keyboardCellCallback={(data) => console.log('keyboardCellCallback', data)}
                         focusOnCallback={(data) => { console.log('focusOnCallback', data) }}
                         focusDate={false}

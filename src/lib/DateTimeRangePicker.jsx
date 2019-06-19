@@ -27,7 +27,8 @@ class DateTimeRangePicker extends React.Component {
             startLabel: this.props.start.format(momentFormat),
             end: this.props.end,
             endLabel: this.props.end.format(momentFormat),
-            focusDate : false
+            focusDate : false,
+            showCalendars: true,
         }
         this.bindToFunctions();
     }
@@ -47,6 +48,13 @@ class DateTimeRangePicker extends React.Component {
 
     componentDidMount(){
         this.setToRangeValue(this.state.start, this.state.end)
+        const { ranges } = this.state
+        const values = Object.values(ranges)
+        const crIndex = values.findIndex(i => i === 'Custom Range')
+
+        this.setState({
+            selectedRange: crIndex,
+        })
     }
 
     componentDidUpdate(prevProps){
@@ -63,30 +71,36 @@ class DateTimeRangePicker extends React.Component {
         this.props.changeVisibleState();
     }
 
-    rangeSelectedCallback(index, value){
+    rangeSelectedCallback(index, value) {
         // If Past Max Date Dont allow update
         let start;
         let end;
-        if(value !== "Custom Range"){
+        let showCalendars = true
+        if(value !== "Custom Range") {
             start = this.state.ranges[value][0];
             end = this.state.ranges[value][1];
-            if(pastMaxDate(start, this.props.maxDate, true) || pastMaxDate(end, this.props.maxDate, true)){
+            showCalendars = false
+            if(pastMaxDate(start, this.props.maxDate, true) || pastMaxDate(end, this.props.maxDate, true)) {
                 return false;
             }
+
+            this.updateStartEndAndLabels(start, end);
+            this.props.onRangeChanged(value, start, end);
+            this.props.changeVisibleState();
         }
         // Else update state to new selected index and update start and end time
-        this.setState({selectedRange:index});
-        if(value !== "Custom Range"){
-            this.updateStartEndAndLabels(start, end);
-        }
+        this.setState({
+            selectedRange: index,
+            showCalendars,
+        });
     }
 
-    setToRangeValue(startDate, endDate){
+    setToRangeValue(startDate, endDate) {
         let rangesArray = Object.values(this.state.ranges)
-        for(let i = 0; i < rangesArray.length; i++){
-            if(rangesArray[i] === "Custom Range"){
+        for(let i = 0; i < rangesArray.length; i++) {
+            if(rangesArray[i] === "Custom Range") {
                 continue;
-            }else if(rangesArray[i][0].isSame(startDate, "minutes") && rangesArray[i][1].isSame(endDate, "minutes")){
+            } else if(rangesArray[i][0].isSame(startDate, "minutes") && rangesArray[i][1].isSame(endDate, "minutes")) {
                 this.setState({selectedRange:i});
                 return;
             }
@@ -94,7 +108,7 @@ class DateTimeRangePicker extends React.Component {
         this.setToCustomRange();
     }
 
-    setToCustomRange(){
+    setToCustomRange() {
         let rangesArray = Object.values(this.state.ranges)
         for(let i = 0; i < rangesArray.length; i++){
             if(rangesArray[i] === "Custom Range"){
@@ -358,8 +372,13 @@ class DateTimeRangePicker extends React.Component {
                     rangeSelectedCallback={this.rangeSelectedCallback}
                     screenWidthToTheRight={this.props.screenWidthToTheRight}
                 />
-                {this.renderStartDate()}
-                {this.renderEndDate()}
+                {
+                    this.state.showCalendars &&
+                    <div className="simple-calendar-start-end">
+                        {this.renderStartDate()}
+                        {this.renderEndDate()}
+                    </div>
+                }
             </Fragment>
         )
     }

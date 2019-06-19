@@ -73,7 +73,7 @@ class DateTimeRangeContainer extends React.Component {
         }
     }
 
-    changeVisibleState(){
+    changeVisibleState() {
         this.setState(prevState => ({
             visible: !prevState.visible,
          }));
@@ -106,6 +106,7 @@ class DateTimeRangeContainer extends React.Component {
                             end={this.props.end}
                             local={this.props.local}
                             applyCallback={this.props.applyCallback}
+                            onRangeChanged={this.props.onRangeChanged}
                             changeVisibleState={this.changeVisibleState}
                             screenWidthToTheRight={this.state.screenWidthToTheRight}
                             maxDate={this.props.maxDate}
