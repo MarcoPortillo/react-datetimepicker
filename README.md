@@ -160,6 +160,11 @@ class Wrapper extends React.Component {
            this.props.onCalendarChange()
        }
     }
+    
+    onRangeChanged(value, startDate, endDate) {
+        console.log(value, startDate, endDate)
+        this.applyCallback(startDate, endDate)
+    }
 
      render(){
         let now = new Date();
@@ -192,6 +197,7 @@ class Wrapper extends React.Component {
                          local={local}
                          maxDate={maxDate}
                          applyCallback={this.applyCallback}
+                         onRangeChanged={this.onRangeChanged}
                      >
                          <input
                              id="formControlsTextB"
